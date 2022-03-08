@@ -1,5 +1,5 @@
 {
-    "name": "imiphp/imi-tars",
+    "name": "Eno-CN/imi-tars",
     "type": "library",
     "license": "MIT",
     "description": "在 imi 框架中集成 Tars 服务开发",
