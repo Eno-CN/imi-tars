@@ -27,6 +27,8 @@ class Connector
 
     protected $_iVersion;
 
+    protected $_iTimeout = 2;
+
     // monitorHelper?
 //    protected $monitor;
 //    protected $_statServantName;
