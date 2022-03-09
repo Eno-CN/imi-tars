@@ -15,7 +15,6 @@ use Imi\Tars\Annotation\Parser\TarsClientParser;
  * @Inherit
  * @Annotation
  * @Target({"PROPERTY", "ANNOTATION"})
- * @Parser("Imi\Bean\Parser\NullParser")
  *
  * @property string|null $servantName
  */
