@@ -110,4 +110,12 @@ class TarsClient implements IRpcClient
     {
         return $this->options;
     }
+
+    /**
+     * @return ConnectorConfig|null
+     */
+    public function getConnectorConfig(): ?ConnectorConfig
+    {
+        return $this->connectorConfig;
+    }
 }
