@@ -4,6 +4,7 @@
     "license": "MIT",
     "description": "在 imi 框架中集成 Tars 服务开发",
     "require": {
+        "php": ">=7.4",
         "imiphp/imi": "~2.0.0",
         "imiphp/imi-rpc": "~2.0.0",
         "imiphp/imi-swoole": "~2.0.0"
@@ -14,23 +15,11 @@
             "Imi\\Server\\Tars\\": "src/Imi-Server-Tars/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Imi\\Tars\\Dev\\": "dev/"
-        },
-        "files": [
-            "../../../vendor/autoload.php",
-            "../../../dev/try-include-swoole.php"
-        ]
-    },
+    "autoload-dev": {},
     "scripts": {
         "imi/tars/generate": "\\Imi\\Tars\\Translator::generate",
         "imi/tars/build/server": "\\Imi\\Tars\\Translator::buildServer",
         "imi/tars/build/client": "\\Imi\\Tars\\Translator::buildClient",
-        "imi/tars/package": "\\Imi\\Tars\\Package::run",
-        "pre-install-cmd": "Imi\\Tars\\Dev\\Dev::preUpdate",
-        "pre-update-cmd": "Imi\\Tars\\Dev\\Dev::preUpdate",
-        "post-install-cmd": "Imi\\Tars\\Dev\\Dev::postUpdate",
-        "post-update-cmd": "Imi\\Tars\\Dev\\Dev::postUpdate"
+        "imi/tars/package": "\\Imi\\Tars\\Package::run"
     }
 }

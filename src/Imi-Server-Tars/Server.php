@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Imi\Server\Tars;
 
 use Imi\App;
+use Imi\Bean\Annotation\Bean;
 use Imi\Event\EventParam;
 use Imi\Rpc\BaseRpcTcpServer;
 use Imi\Server\Protocol;
