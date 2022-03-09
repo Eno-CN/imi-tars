@@ -1,12 +1,12 @@
 {
-    "name": "imiphp/imi-tars",
+    "name": "eno-cn/imi-tars",
     "type": "library",
     "license": "MIT",
     "description": "在 imi 框架中集成 Tars 服务开发",
     "require": {
+        "imiphp/imi": "~2.0.0",
         "imiphp/imi-rpc": "~2.0.0",
-        "imiphp/imi-swoole": "~2.0.0",
-        "phptars/tars-utils": "~0.3.0"
+        "imiphp/imi-swoole": "~2.0.0"
     },
     "autoload": {
         "psr-4": {

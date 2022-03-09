@@ -6,7 +6,7 @@ namespace Imi\Tars\Route\Annotation;
 
 use Imi\Bean\Annotation\Base;
 use Imi\Bean\Annotation\Parser;
-use Imi\Tars\Annotation\Contract\IRpcAction;
+use Imi\Rpc\Route\Annotation\Contract\IRpcAction;
 
 /**
  * Tars 方法注解.

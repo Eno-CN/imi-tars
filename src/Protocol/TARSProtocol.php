@@ -220,9 +220,8 @@ class TARSProtocol
                     ];
                 }
             }
-            else
+            else if(strstr($validLine, '@return'))
             {
-
                 if (count($parts) > 2)
                 {
                     $returnParam = [
@@ -231,7 +230,7 @@ class TARSProtocol
                         'tag' => 0,
                     ];
                 }
-                else
+                else if (count($parts) === 2)
                 {
                     $returnParam = [
                         'type' => $parts[1],

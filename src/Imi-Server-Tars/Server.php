@@ -18,6 +18,11 @@ use Imi\Tars\Route\Annotation\TarsAction;
 use Imi\Tars\Route\Annotation\TarsRoute;
 use Imi\Tars\Route\Annotation\TarsServant;
 
+/**
+ * Tars 服务器类.
+ *
+ * @Bean(name="TarsServer", env="swoole")
+ */
 class Server extends BaseRpcTcpServer
 {
     private bool $isHookTarsOn = false;

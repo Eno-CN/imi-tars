@@ -67,8 +67,8 @@ class ActionMiddleware implements IMiddleware
     {
         $paramInfo = $routeResult->routeItem->annotation->paramInfos;
         return [
-            'args' => $protocol->convertToArgs($paramInfo, $data),
-            'unpackResult' => $data
+            'args' => $protocol->convertToArgs($paramInfo, $data->getFormatData()),
+            'unpackResult' => $data->getFormatData()
         ];
     }
 }

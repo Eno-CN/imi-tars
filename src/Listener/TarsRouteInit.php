@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Imi\Tars\Listener;
 
 use Imi\Bean\Annotation\AnnotationManager;
+use Imi\Bean\Annotation\Listener;
 use Imi\Event\EventParam;
 use Imi\Event\IEventListener;
 use Imi\RequestContext;
@@ -22,6 +23,8 @@ use Imi\Worker;
 
 /**
  * Tars 服务器路由初始化.
+ *
+ * @Listener("IMI.MAIN_SERVER.WORKER.START")
  */
 class TarsRouteInit implements IEventListener
 {
@@ -42,7 +45,7 @@ class TarsRouteInit implements IEventListener
     {
         $controllerParser = TarsServantParser::getInstance();
         $context = RequestContext::getContext();
-        foreach (ServerManager::getServers(IRpcServer::class) as $name => $server)
+        foreach (ServerManager::getServers(\Imi\Swoole\Server\TcpServer\Server::class) as $name => $server)
         {
             $context['server'] = $server;
             /** @var Route $route */
@@ -65,7 +68,7 @@ class TarsRouteInit implements IEventListener
                 foreach (AnnotationManager::getMethodsAnnotations($className, TarsAction::class) as $methodName => $actionAnnotations)
                 {
                     /** @var TarsRoute[] $routes */
-                    $routes = AnnotationManager::getMethodAnnotations($className, $methodName, Route::class);
+                    $routes = AnnotationManager::getMethodAnnotations($className, $methodName, TarsRoute::class);
                     if (!$routes)
                     {
                         throw new \RuntimeException(sprintf('%s->%s method has no route', $className, $methodName));
@@ -79,7 +82,6 @@ class TarsRouteInit implements IEventListener
                     }
                     // 最终中间件
                     $middlewares = array_values(array_unique(array_merge($classMiddlewares, $methodMiddlewares)));
-
                     foreach ($routes as $routeItem)
                     {
                         if (null === $routeItem->func)

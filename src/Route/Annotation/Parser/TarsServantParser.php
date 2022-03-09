@@ -8,13 +8,14 @@ use Imi\Bean\Annotation\AnnotationManager;
 use Imi\Bean\Parser\BaseParser;
 use Imi\Config;
 use Imi\Event\Event;
+use Imi\Util\Traits\TServerAnnotationParser;
 
 /**
  * Servant注解处理器.
  */
 class TarsServantParser extends BaseParser
 {
-    protected array $cache = [];
+	use TServerAnnotationParser;
 
     /**
      * {@inheritDoc}

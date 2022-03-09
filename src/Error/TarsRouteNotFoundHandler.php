@@ -31,6 +31,6 @@ class TarsRouteNotFoundHandler implements ITcpRouteNotFoundHandler
         {
             return App::getBean($this->handler)->handle($data, $handler);
         }
-        throw new \Exception(Code::TARSSERVERNOTFOUNDROUTEERR);
+        throw new \Exception("Code::TARSSERVERNOTFOUNDROUTEERR");
     }
 }

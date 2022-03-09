@@ -82,6 +82,14 @@ class TarsClient implements IRpcClient
     /**
      * {@inheritDoc}
      */
+    public function checkConnected(): bool
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getInstance(): Connector
     {
         return $this->connector;

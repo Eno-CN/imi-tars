@@ -23,7 +23,7 @@ class Report
 
     public function keepAlive(ServerInfo $serverInfo)
     {
-        run(function () use($serverInfo) {
+        //run(function () use($serverInfo) {
 
             try {
                 $structBuffer = \TUPAPI::putStruct('serverInfo', $serverInfo);
@@ -60,7 +60,7 @@ class Report
             } catch (\Exception $e) {
                 return -1;
             }
-        });
+        //});
 
     }
 }

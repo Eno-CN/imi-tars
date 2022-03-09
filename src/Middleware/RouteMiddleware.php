@@ -43,7 +43,6 @@ class RouteMiddleware implements IMiddleware
         else
         {
             RequestContext::set('routeResult', $result);
-
             return $handler->handle($data);
         }
     }

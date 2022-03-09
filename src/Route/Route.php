@@ -54,7 +54,6 @@ class Route implements IRoute
         $method = $callable->getMethodName();
         $ref = new \ReflectionMethod($class, $method);
         $docblock = $ref->getDocComment();
-
         /** @var TARSProtocol $TARSProtocol */
         $TARSProtocol = App::getBean('TARSProtocol');
         $annotation->paramInfos = $TARSProtocol->parseParamsAnnotation($docblock); //解析参数信息到注解中缓存
