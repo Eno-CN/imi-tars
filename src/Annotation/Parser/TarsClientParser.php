@@ -8,6 +8,8 @@ use Imi\Bean\Annotation\AnnotationManager;
 use Imi\Bean\Parser\BaseParser;
 use Imi\Event\Event;
 use Imi\Tars\Annotation\TarsClientImpl;
+use Imi\Tars\Annotation\TarsService;
+use Imi\Rpc\Client\Pool\RpcClientPool;
 
 /**
  * Tars 客户端注入处理器.
@@ -28,7 +30,7 @@ class TarsClientParser extends BaseParser
     /**
      * 根据ServantName获取对应的Servant客户端实现类.
      */
-    public function getClientImpl(string $servantName): string
+    public function getClientImpl(string $servantName)
     {
         if (isset($this->cache[$servantName]))
         {
@@ -39,9 +41,11 @@ class TarsClientParser extends BaseParser
         {
             $class = $option->getClass();
             /** @var TarsClientImpl $TarsClientImplAnnotation */
-            $TarsClientImplAnnotation = AnnotationManager::getClassAnnotations($class,TarsClientImpl::class)[0];
+            $TarsClientImplAnnotation = AnnotationManager::getClassAnnotations($class, TarsClientImpl::class)[0];
             if($servantName === $TarsClientImplAnnotation->servantName){
-                $result = $class;
+                $result = $class::getInstance();
+				$result->connector = RpcClientPool::getService($servantName);
+				//$TarsServiceAnnotation = AnnotationManager::getPropertyAnnotations($class, 'connector', TarsService::class)[0];
             }
         }
 

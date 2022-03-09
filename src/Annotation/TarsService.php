@@ -6,6 +6,7 @@ namespace Imi\Tars\Annotation;
 
 use Imi\Aop\Annotation\Inject;
 use Imi\Bean\Annotation\Inherit;
+use Imi\Bean\Annotation\Parser;
 use Imi\Rpc\Client\Pool\RpcClientPool;
 
 /**

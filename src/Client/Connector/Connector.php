@@ -43,6 +43,7 @@ class Connector
         $this->_iTimeout = $config->getConnectTimeout();
         $this->_setdivision = $config->getSetDivision();
         $this->_enableset = $config->isEnableSet();
+		$this->_routeInfo = $config->getRouteInfo();
 
         $this->_iVersion = $config->getIVersion();
 
@@ -62,13 +63,13 @@ class Connector
     {
         // 服务发现
         $this->_routeInfo = $this->_registry->findObjectById($this->_servantName);
-
         return $this->invoke(...$arguments);
 
     }
 
     public function __get($name){
         $this->_servantName = $name;
+		return $this;
     }
 
     // 同步的socket tcp收发
@@ -80,19 +81,17 @@ class Connector
             throw new \Exception('Rout fail', Code::ROUTE_FAIL);
         }
         $index = rand(0, $count);
-        $ip = empty($sIp) ? $this->_routeInfo[$index]['sIp'] : $sIp;
-        $port = empty($iPort) ? $this->_routeInfo[$index]['iPort'] : $iPort;
+        $ip = empty($sIp) ? ($this->_routeInfo[$index]['sIp'] ?? $this->_routeInfo[$index]['host']) : $sIp;
+        $port = empty($iPort) ? ($this->_routeInfo[$index]['iPort'] ?? $this->_routeInfo[$index]['port']) : $iPort;
 
         try {
             $requestBuf = $requestPacket->encode();
             $responseBuf = $this->swooleCoroutineTcp($ip, $port,
                 $requestBuf, $timeout);
-
             $responsePacket = $responsePacket ?: new ResponsePacket();
             $responsePacket->_responseBuf = $responseBuf;
-            $responsePacket->iVersion = $this->_iVersion;
+            $responsePacket->iVersion = $requestPacket->_iVersion;
             $sBuffer = $responsePacket->decode();
-
 //            $endTime = $this->militime();
 
 //            if(!is_null($this->_locator))
@@ -149,7 +148,7 @@ class Connector
             $data = $client ? $client->recv() : '';
             if ($firstRsp) {
                 $firstRsp = false;
-                $list = unpack('N', substr($data, 0, 4));
+                $list = unpack('Nlen', substr($data, 0, 4));
                 $packLen = $list['len'];
                 $responseBuf = $data;
                 $curLen += strlen($data);

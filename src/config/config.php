@@ -12,5 +12,6 @@ return [
         'Imi\Tars\Error',
         'Imi\Tars\Middleware',
 		'Imi\Tars\Protocol',
+		'Imi\Tars\Registry',
     ],
 ];

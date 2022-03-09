@@ -6,7 +6,6 @@ namespace Imi\Tars\Annotation;
 
 use Imi\Aop\Annotation\Inject;
 use Imi\Bean\Annotation\Inherit;
-use Imi\Bean\Annotation\Parser;
 use Imi\Tars\Annotation\Parser\TarsClientParser;
 
 /**
@@ -36,7 +35,6 @@ class TarsClient extends Inject
     public function getRealValue()
     {
         //找到指定servantName的@TarsClientImpl注解对应的类
-        $clientImpl = TarsClientParser::getInstance()->getClientImpl($this->servantName);
-        return $clientImpl::getInstance();
+        return TarsClientParser::getInstance()->getClientImpl($this->servantName);
     }
 }
