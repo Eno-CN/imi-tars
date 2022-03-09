@@ -57,8 +57,6 @@ class ConnectorConfig
         $this->stat = $config['tars']['application']['client']['stat'];
         $this->property = $config['tars']['application']['client']['property'];
         $this->reportInterval = $config['tars']['application']['client']['report-interval'];
-        $this->sampleRate = $config['tars']['application']['client']['sample-rate'];
-        $this->maxSampleCount = $config['tars']['application']['client']['max-sample-count'];
         $this->moduleName = $config['tars']['application']['client']['modulename'];
         $enableSetStr = $config['tars']['application']['enableset'];
         $this->setDivision = $config['tars']['application']['setdivision'];
