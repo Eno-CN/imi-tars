@@ -7,7 +7,6 @@ namespace Imi\Server\Tars;
 use Imi\App;
 use Imi\Bean\Annotation\Bean;
 use Imi\Event\EventParam;
-use Imi\Rpc\BaseRpcTcpServer;
 use Imi\Server\Protocol;
 use Imi\Server\ServerManager;
 use Imi\Swoole\Server\Contract\ISwooleServer;
@@ -24,7 +23,7 @@ use Imi\Tars\Route\Annotation\TarsServant;
  *
  * @Bean(name="TarsServer", env="swoole")
  */
-class Server extends BaseRpcTcpServer
+class Server extends \Imi\Swoole\Server\TcpServer\Server
 {
     private bool $isHookTarsOn = false;
 
@@ -185,46 +184,6 @@ class Server extends BaseRpcTcpServer
             $this->swoolePort->on('close', static function () {
             });
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getRpcType(): string
-    {
-        return 'Tars';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getControllerAnnotation(): string
-    {
-        return TarsServant::class;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getActionAnnotation(): string
-    {
-        return TarsAction::class;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getRouteAnnotation(): string
-    {
-        return TarsRoute::class;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getRouteClass(): string
-    {
-        return 'TarsRoute';
     }
 
     /**
