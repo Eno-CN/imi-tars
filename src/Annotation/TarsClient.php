@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Imi\Tars\Annotation;
 
 use Imi\Aop\Annotation\Inject;
-use Imi\Bean\Annotation\AnnotationManager;
 use Imi\Bean\Annotation\Inherit;
 use Imi\Bean\Annotation\Parser;
-use Imi\Rpc\Client\Pool\RpcClientPool;
-use Imi\Tars\Route\Annotation\Parser\TarsClientParser;
+use Imi\Tars\Annotation\Parser\TarsClientParser;
 
 /**
  * Tars 客户端注入.
