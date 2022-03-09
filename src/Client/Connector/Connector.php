@@ -19,14 +19,12 @@ class Connector
     protected $_localIp;
     protected $_locator;
 
-    protected $_timeout;
     protected $_setdivision;
     protected $_enableset;
 
     protected $_routeInfo;
 
-    protected $_iVersion;
-
+    protected $_iVersion = 1;
     protected $_iTimeout = 2;
 
     // monitorHelper?
@@ -42,7 +40,7 @@ class Connector
         $this->_servantName = $config->getServantName();
         $this->_localIp = $config->getLocalip();
         $this->_locator = $config->getLocator();
-        $this->_timeout = $config->getConnectTimeout();
+        $this->_iTimeout = $config->getConnectTimeout();
         $this->_setdivision = $config->getSetDivision();
         $this->_enableset = $config->isEnableSet();
 
@@ -76,10 +74,7 @@ class Connector
     // 同步的socket tcp收发
     public function invoke(RequestPacket $requestPacket, $timeout, $responsePacket = null, $sIp = '', $iPort = 0)
     {
-        // 转换成网络需要的timeout
-        $timeout = $timeout / 1000;
-
-        $startTime = $this->militime();
+//        $startTime = $this->militime();
         $count = count($this->_routeInfo) - 1;
         if ($count === -1) {
             throw new \Exception('Rout fail', Code::ROUTE_FAIL);

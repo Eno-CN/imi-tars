@@ -26,7 +26,7 @@ class ConnectorConfig
     protected $servantName;
     protected $enableSet = false;
     protected $setDivision = null;
-    protected $connectTimeout = 3000;
+    protected $connectTimeout = 3;
     protected $keepAliveTime;
     protected $charsetName;
     protected $logPath;
