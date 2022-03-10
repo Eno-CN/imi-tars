@@ -15,7 +15,7 @@ use Imi\Util\Traits\TServerAnnotationParser;
  */
 class TarsServantParser extends BaseParser
 {
-	use TServerAnnotationParser;
+    use TServerAnnotationParser;
 
     /**
      * {@inheritDoc}
@@ -35,7 +35,7 @@ class TarsServantParser extends BaseParser
         {
             return $this->cache[$serverName];
         }
-        $namespaces = Config::get('@server.' . $serverName . '.beanScan', []);
+        $namespaces = Config::get('@server')[$serverName]['beanScan'] ?? [];
         foreach ($namespaces as &$namespace)
         {
             if ('\\' !== substr($namespace, -1, 1))
@@ -57,7 +57,6 @@ class TarsServantParser extends BaseParser
                 }
             }
         }
-
         return $this->cache[$serverName] = $result;
     }
 }
