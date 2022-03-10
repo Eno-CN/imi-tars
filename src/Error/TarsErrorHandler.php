@@ -29,8 +29,10 @@ class TarsErrorHandler
     {
         /** @var ITcpServer $server */
         $server = RequestContext::getServer();
-        $clientId =  ReceiveDataProxy::getClientId();
-        $data =  ReceiveDataProxy::getFormatData();
+
+        $receiveDataProxy = new ReceiveDataProxy();
+        $clientId =  $receiveDataProxy->getClientId();
+        $data =  $receiveDataProxy->getFormatData();
 
         /** @var TARSProtocol $protocol */
         $protocol = App::getBean('TARSProtocol');
