@@ -56,7 +56,7 @@ class TARSProtocol
                 $buf = $argv;
             }
         } else {
-            throw new \Exception(Code::TARSSERVERENCODEERR);
+            throw new \Exception(Code::getMsg(Code::TARSSERVERENCODEERR), Code::TARSSERVERENCODEERR);
         }
 
         return $buf;
@@ -174,7 +174,7 @@ class TARSProtocol
 
             return $rspBuf;
         } catch (\Exception $e) {
-            throw new \Exception(Code::TARSSERVERENCODEERR);
+            throw new \Exception(Code::getMsg(Code::TARSSERVERENCODEERR),Code::TARSSERVERENCODEERR);
         }
     }
 
@@ -331,7 +331,7 @@ class TARSProtocol
                         $value = $sBuffer[$inParam['name']];
                     }
                 } else {
-                    throw new \Exception(Code::TARSSERVERDECODEERR);
+                    throw new \Exception(Code::getMsg(Code::TARSSERVERDECODEERR),Code::TARSSERVERDECODEERR);
                 }
 
                 $args[] = $value;
@@ -362,7 +362,7 @@ class TARSProtocol
 
             return $args;
         } catch (\Exception $e) {
-            throw new \Exception(Code::TARSSERVERDECODEERR);
+            throw new \Exception(Code::getMsg(Code::TARSSERVERDECODEERR),Code::TARSSERVERDECODEERR);
         }
     }
 

@@ -59,30 +59,30 @@ class Code
     const TARS_GET_FLOAT_FAILED = -10044;
 
     // tars服务端可能返回的错误码
-    const JCESERVERSUCCESS = 0; //服务器端处理成功
-    const JCESERVERDECODEERR = -1; //服务器端解码异常
-    const JCESERVERENCODEERR = -2; //服务器端编码异常
-    const JCESERVERNOFUNCERR = -3; //服务器端没有该函数
-    const JCESERVERNOSERVANTERR = -4; //服务器端五该Servant对象
-    const JCESERVERRESETGRID = -5; //服务器端灰度状态不一致
-    const JCESERVERQUEUETIMEOUT = -6; //服务器队列超过限制
-    const JCEASYNCCALLTIMEOUT = -7; //异步调用超时
-    const JCEPROXYCONNECTERR = -8; //proxy链接异常
-    const JCESERVERUNKNOWNERR = -99; //服务器端未知异常
+    const TARSSERVERSUCCESS = 0; //服务器端处理成功
+    const TARSSERVERDECODEERR = -1; //服务器端解码异常
+    const TARSSERVERENCODEERR = -2; //服务器端编码异常
+    const TARSSERVERNOFUNCERR = -3; //服务器端没有该函数
+    const TARSSERVERNOSERVANTERR = -4; //服务器端五该Servant对象
+    const TARSSERVERRESETGRID = -5; //服务器端灰度状态不一致
+    const TARSSERVERQUEUETIMEOUT = -6; //服务器队列超过限制
+    const TARSASYNCCALLTIMEOUT = -7; //异步调用超时
+    const TARSPROXYCONNECTERR = -8; //proxy链接异常
+    const TARSSERVERUNKNOWNERR = -99; //服务器端未知异常
 
     public static function getErrMsg($code)
     {
         $errMap = [
-            self::JCESERVERSUCCESS => '服务器端处理成功',
-            self::JCESERVERDECODEERR => '服务器端解码异常',
-            self::JCESERVERENCODEERR => '服务器端编码异常',
-            self::JCESERVERNOFUNCERR => '服务器端没有该函数',
-            self::JCESERVERNOSERVANTERR => '服务器端无该Servant对象',
-            self::JCESERVERRESETGRID => '服务器端灰度状态不一致',
-            self::JCESERVERQUEUETIMEOUT => '服务器队列超过限制',
-            self::JCEASYNCCALLTIMEOUT => '异步调用超时',
-            self::JCEPROXYCONNECTERR => 'proxy链接异常',
-            self::JCESERVERUNKNOWNERR => '服务器端未知异常',
+            self::TARSSERVERSUCCESS => '服务器端处理成功',
+            self::TARSSERVERDECODEERR => '服务器端解码异常',
+            self::TARSSERVERENCODEERR => '服务器端编码异常',
+            self::TARSSERVERNOFUNCERR => '服务器端没有该函数',
+            self::TARSSERVERNOSERVANTERR => '服务器端无该Servant对象',
+            self::TARSSERVERRESETGRID => '服务器端灰度状态不一致',
+            self::TARSSERVERQUEUETIMEOUT => '服务器队列超过限制',
+            self::TARSASYNCCALLTIMEOUT => '异步调用超时',
+            self::TARSPROXYCONNECTERR => 'proxy链接异常',
+            self::TARSSERVERUNKNOWNERR => '服务器端未知异常',
             self::ROUTE_FAIL => '路由失败，请检查环境是否匹配，agent是否配置正确',
             self::TARS_PUT_BOOL_FAILED => 'bool类型打包失败，请检查是否传入了正确值',
             self::TARS_PUT_STRUCT_FAILED => 'struct类型打包失败，请检查是否传入了正确值',
@@ -127,6 +127,6 @@ class Code
             self::TARS_SOCKET_CREATE_FAILED => 'socket 创建失败',
         ];
 
-        return $errMap[$code] ?? 'Tars异常';
+        return $errMap[$code] ?? $errMap[self::TARSSERVERUNKNOWNERR];
     }
 }
