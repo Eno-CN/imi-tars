@@ -43,9 +43,7 @@ class TarsClientParser extends BaseParser
             /** @var TarsClientImpl $TarsClientImplAnnotation */
             $TarsClientImplAnnotation = AnnotationManager::getClassAnnotations($class, TarsClientImpl::class)[0];
             if($servantName === $TarsClientImplAnnotation->servantName){
-                $result = $class::getInstance();
-				$result->connector = RpcClientPool::getService($servantName);
-				//$TarsServiceAnnotation = AnnotationManager::getPropertyAnnotations($class, 'connector', TarsService::class)[0];
+                $result = \Imi\Bean\BeanFactory::newInstance($class);
             }
         }
 
