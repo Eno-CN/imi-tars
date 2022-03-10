@@ -47,7 +47,7 @@ class TarsClient implements IRpcClient
         // 获取tars配置 不存在则抛异常
         $this->options = $options;
         $this->connectorConfig = new ConnectorConfig($this->options);
-        $this->registry = new Registry($this->connectorConfig);
+        $this->registry = \Imi\Bean\BeanFactory::newInstance(Registry::class,$this->connectorConfig);
     }
 
     /**
