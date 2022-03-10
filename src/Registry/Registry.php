@@ -55,6 +55,7 @@ class Registry
      * 通过ServantName寻址
      *
      * @Cacheable(
+     *   name="tarsCache",
      *   key="Registry:Locator:{servant}",
      *   ttl=300,
      *   lockable=@Lockable(
