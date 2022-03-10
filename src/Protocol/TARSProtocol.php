@@ -78,7 +78,7 @@ class TARSProtocol
         $statuses = [];
         $encodeBufs = [];
 
-        $msg = empty($msg) ? Code::getMsg($code) : $msg;
+        $msg = empty($msg) ? Code::getMsg($code ?? Code::TARSSERVERUNKNOWNERR) : $msg;
 
         if ($iVersion === 1) {
             $rspBuf = \TUPAPI::encodeRspPacket($iVersion, $cPacketType,
